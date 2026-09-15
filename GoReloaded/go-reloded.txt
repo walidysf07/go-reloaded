@@ -1,0 +1,121 @@
+
+sample.txt
+   ↓
+ReadFile()
+   ↓
+text
+   ↓
+WriteFile()
+   ↓
+result.txt
+
+
+___________________________________________________________________
+
+
+main.go
+│
+├── read file
+│
+├── process text
+│   ├── (hex)
+│   ├── (bin)
+│   ├── (up)
+│   ├── (low)
+│   ├── (cap)
+│   ├── punctuation
+│   ├── quotes '
+│   └── a → an
+│
+└── write file
+
+________________________________________________________________________
+
+"Simply add 42 (hex) and 10"
+
+strings.Fields()                    → split text into words
+strconv.ParseInt()                  → convert a string number into an integer
+strconv.FormatInt(number, 10)       → convert an integer into a string
+
+
+          words := strings.Fields(text)
+
+
+words[0] = "Simply"
+words[1] = "add"
+words[2] = "42"
+words[3] = "(hex)"
+words[4] = "and"
+words[5] = "10"
+
+
+         number, err := strconv.ParseInt(word, 16, 64)
+
+"42" in hexadecimal
+       ↓
+4 × 16 + 2
+       ↓
+66 in decimal
+
+word → "42"
+16   → hexadecimal (base 16)
+64   → use a 64-bit integer
+
+
+
+         converted := strconv.FormatInt(number, 10)
+         
+
+"42" --ParseInt(..., 16, 64)--> 66
+ 66  --FormatInt(..., 10)-----> "66"
+
+
+_____________________________________________________________________________
+
+strings.HasPrefix()   → check if a string starts with something
+strings.Split()       → split a string into smaller parts
+strings.TrimSuffix()  → remove a specific ending from a string
+strconv.Atoi() → convert a string into an integer
+
+      
+      strings.HasPrefix(words[i], "(up,"))
+
+
+(up,3)
+(up,5)
+(up,10)
+
+
+      strings.Split("(up,3)", ",")
+
+
+["(up", "3)"]
+
+
+      strings.TrimSuffix("3)", ")") 
+
+
+   "3)" → "3" 
+
+      n, err := strconv.Atoi("3")
+
+   "3"  →  3
+string → int
+
+
+"(up,3)"
+    ↓ Split
+["(up", "3)"]
+    ↓ TrimSuffix
+"3"
+    ↓ Atoi
+3
+
+
+strings.Contains() → check if a string contains something
+strings.Join()     → join strings together with a separator
+
+
+
+
+
