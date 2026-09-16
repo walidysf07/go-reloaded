@@ -152,10 +152,6 @@ func processText(text string) string {
 			words = append(words[:i], words[i+1:]...)
 			i--
 			
-		}else if len(words[i]) > 1 && isPunctuation(string(words[i][0])) && i > 0 {
-			words[i-1] = words[i-1] + string(words[i][0])
-			words[i] = words[i][1:]
-			
 		} else if len(words[i]) > 1 && words[i][len(words[i])-1] == '\'' {
 			punctuation := words[i][:len(words[i])-1]
 
@@ -164,7 +160,9 @@ func processText(text string) string {
 				words = append(words[:i], words[i+1:]...)
 				i--
 			}
-		}
+		}else if len(words[i]) > 1 && isPunctuation(string(words[i][0])) && i > 0 {
+			words[i-1] = words[i-1] + string(words[i][0])
+			words[i] = words[i][1:]
 	}
 
 	for i := 0; i < len(words); i++ {
