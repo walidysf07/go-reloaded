@@ -175,6 +175,9 @@ func processText(text string) string {
 
 				first := string(words[i+1][0])
 				if strings.Contains("aieouh", first) {
+         			if words[i] == "A" {
+					words[i] = "An"
+					} else {
 					words[i] = "an"
 				}
 			}
