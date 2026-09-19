@@ -169,21 +169,21 @@ func processText(text string) string {
 			words[i-1] = words[i-1] + string(words[i][0])
 			words[i] = words[i][1:]
 		}
+	}
 
-		for i := 0; i < len(words); i++ {
-			if words[i] == "a" && i+1 < len(words) {
-
-				first := string(words[i+1][0])
-				if strings.Contains("aieouh", first) {
-         			if words[i] == "A" {
+	for i := 0; i < len(words); i++ {
+		if (words[i] == "a" || words[i] == "A") && i+1 < len(words) {
+			first := strings.ToLower(string(words[i+1][0]))
+			if strings.Contains("aeiouh", first) {
+				if words[i] == "A" {
 					words[i] = "An"
-					} else {
+				} else {
 					words[i] = "an"
 				}
 			}
 		}
-
 	}
+
 	return strings.Join(words, " ")
 }
 
